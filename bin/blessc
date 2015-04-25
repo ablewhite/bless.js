@@ -12,7 +12,8 @@ var options = {
     cleanup: true,
     compress: false,
     force: false,
-    imports: true
+    imports: true,
+    limit: 4095
 };
 
 args = args.filter(function (arg) {
@@ -41,12 +42,16 @@ args = args.filter(function (arg) {
             console.log('  --no-cleanup       don\'t remove old css file before overwriting');
             console.log('  --no-imports       disable @import on stylesheets');
             console.log('  --no-cache-buster  turn off the cache buster');
+            console.log('  --reduce-limit     reduces default style limit from 4095 to 2048');
             console.log('');
             console.log('Full documentation can be found at http://blesscss.com/');
             process.exit(0);
         case 'x':
         case 'compress':
             options.compress = true;
+            break;
+        case 'reduce-limit':
+            options.limit = 2048;
             break;
         case 'no-cleanup':
             options.cleanup = false;
